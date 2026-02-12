@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematikk 1P - Oppgaver</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tema {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .tema-header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tema-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        
+        .vis-fasit-btn {
+            background-color: white;
+            color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .vis-fasit-btn:hover {
+            background-color: #ecf0f1;
+        }
+        
+        .oppgaver-liste {
+            padding: 20px;
+        }
+        
+        .oppgave {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .oppgave:last-child {
+            border-bottom: none;
+        }
+        
+        .oppgave-nr {
+            font-weight: bold;
+            color: #3498db;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .oppgave-tekst {
+            flex: 1;
+        }
+        
+        .fasit-seksjon {
+            display: none;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-top: 2px solid #3498db;
+        }
+        
+        .fasit-seksjon.vis {
+            display: block;
+        }
+        
+        .fasit-oppgave {
+            padding: 8px 0;
+            border-bottom: 1px solid #bdc3c7;
+            display: flex;
+        }
+        
+        .fasit-oppgave:last-child {
+            border-bottom: none;
+        }
+        
+        .fasit-nr {
+            font-weight: bold;
+            color: #27ae60;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .fasit-svar {
+            color: #27ae60;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .tema-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .oppgave {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .oppgave-nr {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Matematikk 1P - Regneoppgaver</h1>
+        
+        <!-- Tema 1: Tall og algebra -->
+        <div class="tema">
+            <div class="tema-header">
+                <h2>Tall og algebra</h2>
+                <button class="vis-fasit-btn" onclick="toggleFasit('fasit1')">Vis fasit</button>
+            </div>
+            <div class="oppgaver-liste">
+                <div class="oppgave"><span class="oppgave-nr">1.</span><span class="oppgave-tekst">$\frac{2}{3} + \frac{1}{3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">2.</span><span class="oppgave-tekst">$\frac{3}{4} - \frac{1}{4}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">3.</span><span class="oppgave-tekst">$\frac{2}{5} + \frac{1}{5}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">4.</span><span class="oppgave-tekst">$\frac{5}{6} - \frac{2}{6}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">5.</span><span class="oppgave-tekst">$\frac{1}{2} + \frac{1}{4}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">6.</span><span class="oppgave-tekst">$\frac{3}{4} - \frac{1}{2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">7.</span><span class="oppgave-tekst">$\frac{2}{3} + \frac{1}{6}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">8.</span><span class="oppgave-tekst">$\frac{5}{8} - \frac{1}{4}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">9.</span><span class="oppgave-tekst">$\frac{3}{5} \times \frac{2}{3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">10.</span><span class="oppgave-tekst">$\frac{4}{7} \times \frac{7}{8}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">11.</span><span class="oppgave-tekst">$\frac{2}{3} \div \frac{4}{9}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">12.</span><span class="oppgave-tekst">$\frac{5}{6} \div \frac{5}{12}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">13.</span><span class="oppgave-tekst">$20\%$ av $150$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">14.</span><span class="oppgave-tekst">$15\%$ av $200$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">15.</span><span class="oppgave-tekst">$25\%$ av $80$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">16.</span><span class="oppgave-tekst">$75\%$ av $120$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">17.</span><span class="oppgave-tekst">Øk $100$ med $30\%$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">18.</span><span class="oppgave-tekst">Reduser $200$ med $25\%$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">19.</span><span class="oppgave-tekst">$2 + 3 \times 4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">20.</span><span class="oppgave-tekst">$(2 + 3) \times 4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">21.</span><span class="oppgave-tekst">$12 - 4 + 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">22.</span><span class="oppgave-tekst">$15 \div 3 + 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">23.</span><span class="oppgave-tekst">$6 \times (5 - 2)$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">24.</span><span class="oppgave-tekst">$(8 + 4) \div 2 - 3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">25.</span><span class="oppgave-tekst">En vare koster 200 kr. Prisen øker med 15%. Hva er vekstfaktoren?</span></div>
+                <div class="oppgave"><span class="oppgave-nr">26.</span><span class="oppgave-tekst">En vare koster 500 kr. Prisen reduseres med 20%. Hva er vekstfaktoren?</span></div>
+                <div class="oppgave"><span class="oppgave-nr">27.</span><span class="oppgave-tekst">En vare koster 800 kr. Prisen øker med 25%. Hva er den nye prisen?</span></div>
+                <div class="oppgave"><span class="oppgave-nr">28.</span><span class="oppgave-tekst">Forkort: $\frac{12}{18}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">29.</span><span class="oppgave-tekst">Forkort: $\frac{15}{25}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">30.</span><span class="oppgave-tekst">$\frac{2}{3} + \frac{3}{4} - \frac{1}{6}$</span></div>
+            </div>
+            <div id="fasit1" class="fasit-seksjon">
+                <div class="fasit-oppgave"><span class="fasit-nr">1.</span><span class="fasit-svar">$1$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">2.</span><span class="fasit-svar">$\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">3.</span><span class="fasit-svar">$\frac{3}{5}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">4.</span><span class="fasit-svar">$\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">5.</span><span class="fasit-svar">$\frac{3}{4}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">6.</span><span class="fasit-svar">$\frac{1}{4}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">7.</span><span class="fasit-svar">$\frac{5}{6}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">8.</span><span class="fasit-svar">$\frac{3}{8}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">9.</span><span class="fasit-svar">$\frac{2}{5}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">10.</span><span class="fasit-svar">$\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">11.</span><span class="fasit-svar">$\frac{3}{2}$ eller $1\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">12.</span><span class="fasit-svar">$2$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">13.</span><span class="fasit-svar">$30$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">14.</span><span class="fasit-svar">$30$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">15.</span><span class="fasit-svar">$20$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">16.</span><span class="fasit-svar">$90$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">17.</span><span class="fasit-svar">$130$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">18.</span><span class="fasit-svar">$150$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">19.</span><span class="fasit-svar">$14$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">20.</span><span class="fasit-svar">$20$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">21.</span><span class="fasit-svar">$10$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">22.</span><span class="fasit-svar">$7$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">23.</span><span class="fasit-svar">$18$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">24.</span><span class="fasit-svar">$3$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">25.</span><span class="fasit-svar">Vekstfaktor = 1,15</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">26.</span><span class="fasit-svar">Vekstfaktor = 0,80</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">27.</span><span class="fasit-svar">Ny pris = 1000 kr</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">28.</span><span class="fasit-svar">$\frac{2}{3}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">29.</span><span class="fasit-svar">$\frac{3}{5}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">30.</span><span class="fasit-svar">$\frac{5}{4}$ eller $1\frac{1}{4}$</span></div>
+            </div>
+        </div>
+
+        <!-- Tema 2: Likninger -->
+        <div class="tema">
+            <div class="tema-header">
+                <h2>Likninger</h2>
+                <button class="vis-fasit-btn" onclick="toggleFasit('fasit2')">Vis fasit</button>
+            </div>
+            <div class="oppgaver-liste">
+                <div class="oppgave"><span class="oppgave-nr">1.</span><span class="oppgave-tekst">$2x + 3 = 11$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">2.</span><span class="oppgave-tekst">$3x - 5 = 10$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">3.</span><span class="oppgave-tekst">$5x + 2 = 17$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">4.</span><span class="oppgave-tekst">$4x - 7 = 9$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">5.</span><span class="oppgave-tekst">$\frac{x}{3} = 4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">6.</span><span class="oppgave-tekst">$\frac{x}{5} = 3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">7.</span><span class="oppgave-tekst">$\frac{2x}{3} = 6$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">8.</span><span class="oppgave-tekst">$\frac{3x}{4} = 9$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">9.</span><span class="oppgave-tekst">$2(x + 3) = 14$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">10.</span><span class="oppgave-tekst">$3(x - 2) = 15$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">11.</span><span class="oppgave-tekst">$4(x + 1) = 20$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">12.</span><span class="oppgave-tekst">$5(x - 3) = 25$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">13.</span><span class="oppgave-tekst">$\frac{x}{2} + 3 = 7$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">14.</span><span class="oppgave-tekst">$\frac{x}{3} - 2 = 4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">15.</span><span class="oppgave-tekst">$\frac{x + 1}{2} = 5$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">16.</span><span class="oppgave-tekst">$\frac{x - 3}{4} = 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">17.</span><span class="oppgave-tekst">$3x + 2 = 2x + 8$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">18.</span><span class="oppgave-tekst">$5x - 3 = 2x + 9$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">19.</span><span class="oppgave-tekst">$4x + 5 = 2x + 15$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">20.</span><span class="oppgave-tekst">$7x - 4 = 3x + 16$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">21.</span><span class="oppgave-tekst">$\frac{x}{2} + \frac{x}{3} = 5$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">22.</span><span class="oppgave-tekst">$\frac{x}{4} + \frac{x}{2} = 6$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">23.</span><span class="oppgave-tekst">$\frac{2x}{3} - \frac{x}{2} = 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">24.</span><span class="oppgave-tekst">$\frac{3x}{4} = \frac{x}{2} + 5$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">25.</span><span class="oppgave-tekst">$2(x + 3) = x + 10$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">26.</span><span class="oppgave-tekst">$3(x - 2) = 2x + 5$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">27.</span><span class="oppgave-tekst">$4(x + 1) = 3x + 8$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">28.</span><span class="oppgave-tekst">$\frac{x + 2}{3} = \frac{x}{2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">29.</span><span class="oppgave-tekst">$\frac{2x - 1}{3} = x - 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">30.</span><span class="oppgave-tekst">$5x - 2(3x - 4) = 10$</span></div>
+            </div>
+            <div id="fasit2" class="fasit-seksjon">
+                <div class="fasit-oppgave"><span class="fasit-nr">1.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">2.</span><span class="fasit-svar">$x = 5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">3.</span><span class="fasit-svar">$x = 3$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">4.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">5.</span><span class="fasit-svar">$x = 12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">6.</span><span class="fasit-svar">$x = 15$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">7.</span><span class="fasit-svar">$x = 9$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">8.</span><span class="fasit-svar">$x = 12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">9.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">10.</span><span class="fasit-svar">$x = 7$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">11.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">12.</span><span class="fasit-svar">$x = 8$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">13.</span><span class="fasit-svar">$x = 8$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">14.</span><span class="fasit-svar">$x = 18$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">15.</span><span class="fasit-svar">$x = 9$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">16.</span><span class="fasit-svar">$x = 11$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">17.</span><span class="fasit-svar">$x = 6$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">18.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">19.</span><span class="fasit-svar">$x = 5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">20.</span><span class="fasit-svar">$x = 5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">21.</span><span class="fasit-svar">$x = 6$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">22.</span><span class="fasit-svar">$x = 8$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">23.</span><span class="fasit-svar">$x = 12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">24.</span><span class="fasit-svar">$x = 20$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">25.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">26.</span><span class="fasit-svar">$x = 11$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">27.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">28.</span><span class="fasit-svar">$x = 4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">29.</span><span class="fasit-svar">$x = 5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">30.</span><span class="fasit-svar">$x = -2$</span></div>
+            </div>
+        </div>
+
+        <!-- Tema 3: Potensregning -->
+        <div class="tema">
+            <div class="tema-header">
+                <h2>Potensregning</h2>
+                <button class="vis-fasit-btn" onclick="toggleFasit('fasit3')">Vis fasit</button>
+            </div>
+            <div class="oppgaver-liste">
+                <div class="oppgave"><span class="oppgave-nr">1.</span><span class="oppgave-tekst">$2^3 \cdot 2^4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">2.</span><span class="oppgave-tekst">$3^2 \cdot 3^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">3.</span><span class="oppgave-tekst">$5^4 \cdot 5^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">4.</span><span class="oppgave-tekst">$2^5 \cdot 2^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">5.</span><span class="oppgave-tekst">$4^3 \cdot 4^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">6.</span><span class="oppgave-tekst">$(2^3)^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">7.</span><span class="oppgave-tekst">$(3^2)^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">8.</span><span class="oppgave-tekst">$(2^4)^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">9.</span><span class="oppgave-tekst">$(4^2)^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">10.</span><span class="oppgave-tekst">$4^2 \cdot 2^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">11.</span><span class="oppgave-tekst">$5^3 \div 5^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">12.</span><span class="oppgave-tekst">$(2 \cdot 3)^4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">13.</span><span class="oppgave-tekst">$(\frac{3}{2})^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">14.</span><span class="oppgave-tekst">$(\frac{2}{3})^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">15.</span><span class="oppgave-tekst">$(\frac{3}{4})^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">16.</span><span class="oppgave-tekst">$2^{-3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">17.</span><span class="oppgave-tekst">$3^{-2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">18.</span><span class="oppgave-tekst">$5^{-1}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">19.</span><span class="oppgave-tekst">$4^{-2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">20.</span><span class="oppgave-tekst">$\frac{1}{2^{-2}}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">21.</span><span class="oppgave-tekst">$2^0$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">22.</span><span class="oppgave-tekst">$5^0$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">23.</span><span class="oppgave-tekst">$7^0$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">24.</span><span class="oppgave-tekst">$100^0$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">25.</span><span class="oppgave-tekst">Skriv $5000$ på standardform</span></div>
+                <div class="oppgave"><span class="oppgave-nr">26.</span><span class="oppgave-tekst">Skriv $350$ på standardform</span></div>
+                <div class="oppgave"><span class="oppgave-nr">27.</span><span class="oppgave-tekst">Skriv $0{,}004$ på standardform</span></div>
+                <div class="oppgave"><span class="oppgave-nr">28.</span><span class="oppgave-tekst">Skriv $2{,}5 \cdot 10^3$ som vanlig tall</span></div>
+                <div class="oppgave"><span class="oppgave-nr">29.</span><span class="oppgave-tekst">Skriv $4 \cdot 10^{-2}$ som vanlig tall</span></div>
+                <div class="oppgave"><span class="oppgave-nr">30.</span><span class="oppgave-tekst">$\frac{2^5 \cdot 2^3}{2^4}$</span></div>
+            </div>
+            <div id="fasit3" class="fasit-seksjon">
+                <div class="fasit-oppgave"><span class="fasit-nr">1.</span><span class="fasit-svar">$2^7 = 128$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">2.</span><span class="fasit-svar">$3^5 = 243$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">3.</span><span class="fasit-svar">$5^6 = 15625$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">4.</span><span class="fasit-svar">$2^7 = 128$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">5.</span><span class="fasit-svar">$4^5 = 1024$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">6.</span><span class="fasit-svar">$2^6 = 64$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">7.</span><span class="fasit-svar">$3^6 = 729$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">8.</span><span class="fasit-svar">$2^8 = 256$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">9.</span><span class="fasit-svar">$4^4 = 256$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">10.</span><span class="fasit-svar">$128$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">11.</span><span class="fasit-svar">$5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">12.</span><span class="fasit-svar">$6^4 = 1296$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">13.</span><span class="fasit-svar">$\frac{27}{8}$ eller $3\frac{3}{8}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">14.</span><span class="fasit-svar">$\frac{4}{9}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">15.</span><span class="fasit-svar">$\frac{27}{64}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">16.</span><span class="fasit-svar">$\frac{1}{8}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">17.</span><span class="fasit-svar">$\frac{1}{9}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">18.</span><span class="fasit-svar">$\frac{1}{5}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">19.</span><span class="fasit-svar">$\frac{1}{16}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">20.</span><span class="fasit-svar">$4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">21.</span><span class="fasit-svar">$1$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">22.</span><span class="fasit-svar">$1$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">23.</span><span class="fasit-svar">$1$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">24.</span><span class="fasit-svar">$1$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">25.</span><span class="fasit-svar">$5 \cdot 10^3$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">26.</span><span class="fasit-svar">$3{,}5 \cdot 10^2$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">27.</span><span class="fasit-svar">$4 \cdot 10^{-3}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">28.</span><span class="fasit-svar">$2500$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">29.</span><span class="fasit-svar">$0{,}04$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">30.</span><span class="fasit-svar">$2^4 = 16$</span></div>
+            </div>
+        </div>
+
+        <!-- Tema 4: Blandet regning -->
+        <div class="tema">
+            <div class="tema-header">
+                <h2>Blandet regning</h2>
+                <button class="vis-fasit-btn" onclick="toggleFasit('fasit4')">Vis fasit</button>
+            </div>
+            <div class="oppgaver-liste">
+                <div class="oppgave"><span class="oppgave-nr">1.</span><span class="oppgave-tekst">$2 + 3 \times 4 - 5$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">2.</span><span class="oppgave-tekst">$(2 + 3) \times (4 - 5)$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">3.</span><span class="oppgave-tekst">$12 \div 3 + 4 \times 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">4.</span><span class="oppgave-tekst">$20 - 4 \times 3 + 8 \div 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">5.</span><span class="oppgave-tekst">$\frac{1}{2} + \frac{1}{3} \times \frac{2}{3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">6.</span><span class="oppgave-tekst">$(\frac{1}{2} + \frac{1}{3}) \times \frac{2}{3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">7.</span><span class="oppgave-tekst">$\frac{3}{4} - \frac{1}{2} \div 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">8.</span><span class="oppgave-tekst">$(\frac{3}{4} - \frac{1}{2}) \div 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">9.</span><span class="oppgave-tekst">$15\%$ av $200 + 10\%$ av $150$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">10.</span><span class="oppgave-tekst">Reduser $250$ med $20\%$, så øk resultatet med $25\%$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">11.</span><span class="oppgave-tekst">$2^3 \cdot 2^{-2} + 3^0$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">12.</span><span class="oppgave-tekst">$(\frac{2}{3})^{-2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">13.</span><span class="oppgave-tekst">$\frac{2^{-3}}{2^{-5}}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">14.</span><span class="oppgave-tekst">$2^3 \cdot 2^4 \div 2^2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">15.</span><span class="oppgave-tekst">$\frac{3^5 \cdot 3^2}{3^4}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">16.</span><span class="oppgave-tekst">Løs: $2x + 5 = 3x - 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">17.</span><span class="oppgave-tekst">Løs: $\frac{x}{2} - 3 = 4$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">18.</span><span class="oppgave-tekst">Løs: $3(x - 2) = 2(x + 1)$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">19.</span><span class="oppgave-tekst">Løs: $\frac{2x}{3} = \frac{x}{2} + 2$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">20.</span><span class="oppgave-tekst">Løs: $4 - 2x = 10 - 5x$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">21.</span><span class="oppgave-tekst">$\frac{3}{4} + \frac{2}{3} - \frac{5}{6}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">22.</span><span class="oppgave-tekst">$\frac{5}{8} \times \frac{4}{15}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">23.</span><span class="oppgave-tekst">$\frac{7}{12} \div \frac{14}{9}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">24.</span><span class="oppgave-tekst">En vare koster 300 kr. Prisen reduseres med 10%. Hva er den nye prisen?</span></div>
+                <div class="oppgave"><span class="oppgave-nr">25.</span><span class="oppgave-tekst">En vare koster 400 kr. Prisen øker med 30%. Hva er vekstfaktoren og den nye prisen?</span></div>
+                <div class="oppgave"><span class="oppgave-nr">26.</span><span class="oppgave-tekst">$2^4 \cdot 3^2 + 5^2 \cdot 2^3$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">27.</span><span class="oppgave-tekst">$(\frac{1}{2})^{-3} + (\frac{1}{3})^{-2}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">28.</span><span class="oppgave-tekst">$\frac{(2^3)^2 \cdot 2^{-4}}{2^3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">29.</span><span class="oppgave-tekst">Løs: $\frac{x + 3}{2} = \frac{2x - 1}{3}$</span></div>
+                <div class="oppgave"><span class="oppgave-nr">30.</span><span class="oppgave-tekst">$\frac{3}{4} \times (\frac{2}{3} + \frac{1}{6}) \div \frac{5}{8}$</span></div>
+            </div>
+            <div id="fasit4" class="fasit-seksjon">
+                <div class="fasit-oppgave"><span class="fasit-nr">1.</span><span class="fasit-svar">$9$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">2.</span><span class="fasit-svar">$-5$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">3.</span><span class="fasit-svar">$12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">4.</span><span class="fasit-svar">$12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">5.</span><span class="fasit-svar">$\frac{13}{18}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">6.</span><span class="fasit-svar">$\frac{5}{9}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">7.</span><span class="fasit-svar">$\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">8.</span><span class="fasit-svar">$\frac{1}{8}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">9.</span><span class="fasit-svar">$45$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">10.</span><span class="fasit-svar">$250$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">11.</span><span class="fasit-svar">$3$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">12.</span><span class="fasit-svar">$\frac{9}{4}$ eller $2\frac{1}{4}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">13.</span><span class="fasit-svar">$4$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">14.</span><span class="fasit-svar">$32$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">15.</span><span class="fasit-svar">$27$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">16.</span><span class="fasit-svar">$x = 7$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">17.</span><span class="fasit-svar">$x = 14$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">18.</span><span class="fasit-svar">$x = 8$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">19.</span><span class="fasit-svar">$x = 12$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">20.</span><span class="fasit-svar">$x = 2$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">21.</span><span class="fasit-svar">$\frac{7}{12}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">22.</span><span class="fasit-svar">$\frac{1}{6}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">23.</span><span class="fasit-svar">$\frac{3}{8}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">24.</span><span class="fasit-svar">Ny pris = 270 kr</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">25.</span><span class="fasit-svar">Vekstfaktor = 1,30, ny pris = 520 kr</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">26.</span><span class="fasit-svar">$144 + 200 = 344$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">27.</span><span class="fasit-svar">$8 + 9 = 17$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">28.</span><span class="fasit-svar">$\frac{1}{2}$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">29.</span><span class="fasit-svar">$x = 11$</span></div>
+                <div class="fasit-oppgave"><span class="fasit-nr">30.</span><span class="fasit-svar">$1$</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFasit(fasitId) {
+            const fasit = document.getElementById(fasitId);
+            const tema = fasit.closest('.tema');
+            const btn = tema.querySelector('.vis-fasit-btn');
+            
+            if (fasit.classList.contains('vis')) {
+                fasit.classList.remove('vis');
+                btn.textContent = 'Vis fasit';
+            } else {
+                fasit.classList.add('vis');
+                btn.textContent = 'Skjul fasit';
+            }
+        }
+    </script>
+</body>
+</html>
